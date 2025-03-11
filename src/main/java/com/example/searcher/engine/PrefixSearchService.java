@@ -18,8 +18,8 @@ public class PrefixSearchService implements SearchService {
     @Autowired
     private LuceneIndexService luceneIndexService;
 
-    public String[] search(String queryString) throws Exception {
-        Directory index = luceneIndexService.getIndex();
+    public String[] search(String queryString, String lang) throws Exception {
+        Directory index = luceneIndexService.getIndex(lang);
         IndexReader reader = DirectoryReader.open(index);
         IndexSearcher searcher = new IndexSearcher(reader);
 

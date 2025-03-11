@@ -1,5 +1,5 @@
 package com.example.searcher.engine;
 
 public interface SearchService {
-    String[] search(String queryString) throws Exception;
+    String[] search(String queryString, String lang) throws Exception;
 }

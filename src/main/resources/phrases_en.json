@@ -1,0 +1,26 @@
+[
+  {
+    "phrase": "DevOps practices improve software delivery",
+    "keywords": ["devops", "practices", "software", "delivery"]
+  },
+  {
+    "phrase": "Docker simplifies containerization",
+    "keywords": ["docker", "containerization"]
+  },
+  {
+    "phrase": "Kubernetes is the leading container orchestration tool",
+    "keywords": ["kubernetes", "container", "orchestration"]
+  },
+  {
+    "phrase": "Java is a powerful programming language",
+    "keywords": ["java", "programming", "language"]
+  },
+  {
+    "phrase": "Java is a kind of coffee",
+    "keywords": ["java", "island", "coffee"]
+  },
+  {
+    "phrase": "Spring Boot makes Java development easier",
+    "keywords": ["spring", "boot", "java", "development"]
+  }
+]

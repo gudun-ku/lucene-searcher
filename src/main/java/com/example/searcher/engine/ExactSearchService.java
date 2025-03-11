@@ -19,8 +19,8 @@ public class ExactSearchService implements SearchService {
     private LuceneIndexService luceneIndexService;
 
     @Override
-    public String[] search(String queryString) throws Exception {
-        Directory index = luceneIndexService.getIndex();
+    public String[] search(String queryString, String lang) throws Exception {
+        Directory index = luceneIndexService.getIndex(lang);
         IndexReader reader = DirectoryReader.open(index);
         IndexSearcher searcher = new IndexSearcher(reader);
         QueryParser parser = new QueryParser("phrase", luceneIndexService.getAnalyzer());
