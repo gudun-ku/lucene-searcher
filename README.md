@@ -37,15 +37,15 @@ fuzzy matching and multiple languages.
    ```
 
 2. Russian:
-3.
-```
-GET /search?query=доставка&lang=ru
-```
 
-**Response**:
-```json
-["DevOps практики улучшают доставку программного обеспечения"]
-```
+    ```
+    GET /search?query=доставка&lang=ru
+    ```
+    
+    **Response**:
+    ```json
+    ["DevOps практики улучшают доставку программного обеспечения"]
+    ```
 ---
 
 ## Error Handling
