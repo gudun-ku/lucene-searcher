@@ -1,0 +1,29 @@
+
+
+@startuml
+
+!include <C4/C4_Component>
+
+title Full-Text Search Service with Lucene (C4 Style)
+
+Person(user, "User", "Общается в чате")
+ComponentDb(data, "Provided data", "Подготовленные данные в нужной форме")
+Component(messenger, "Alapana service", "Chatbot", "Обрабатывает запросы пользователя и обогащает параметрами")
+
+System_Boundary(searchService, "Компонент для полнотекстового поиска") {
+    Component(controller, "SearchController", "REST Controller", "Обрабатывает запрос ввода и возвращает ключ саджеста") #dd006650
+    Component(searchServiceComponent, "SearchService", "Service Layer", "Производит поиск по индексу (Engine) и возвращает набор ключей") #dd006650
+    Component(indexService, "IndexService", "Indexing Service", "Создает и обновляет поисковый индекс") #dd006650
+    Component(dataLoader, "Index Loader", "Загружает подготовленные для индексирования данные из источника") #dd006650
+    ComponentDb(dataStorage, "Data storage", "Хранит подготовленные данные") #dd006650
+}
+
+Rel(user, messenger, "Вводит текст в чат")
+Rel(messenger, controller, "Посылает запрос после 3 символов (GET /search?query=...)")
+Rel(controller, searchServiceComponent, "Запускает запрос в обработку")
+Rel(searchServiceComponent, indexService, "Запрашивает результаты по построенному индексу")
+Rel(indexService, dataStorage, "Строит индекс для данных")
+Rel(dataLoader, dataStorage, "Помещает данные в хранилище")
+Rel(dataLoader, data, "Получает данные")
+
+@enduml

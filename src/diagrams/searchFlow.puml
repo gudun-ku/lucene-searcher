@@ -1,0 +1,19 @@
+@startuml
+title Логика процесса
+
+start
+:Мессенджер посылает запрос (GET /search?query=...);
+:SearchController обрабатывает запрос;
+if (Query length < 3?) then (yes)
+    :do nothing;
+    stop
+else (no)
+    :SearchService обработка запроса;
+    :Создает Prefix/Fuzzy запрос;
+    :Находит данные в индексе;
+    :Выбирает top 3 ключа саджестов;
+    :Возвращает результаты;
+    stop
+endif
+
+@enduml
