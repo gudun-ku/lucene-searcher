@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.example.searcher.model.Phrase;
+import com.example.searcher.model.SearchObject;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -40,11 +40,11 @@ public class LuceneIndexService {
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         IndexWriter writer = new IndexWriter(index, config);
 
-        List<Phrase> phrases = loadPhrases(fileName);
-        for (Phrase phrase : phrases) {
+        List<SearchObject> searchObjects = loadPhrases(fileName);
+        for (SearchObject searchObject : searchObjects) {
             Document doc = new Document();
-            doc.add(new TextField("phrase", phrase.getPhrase(), Field.Store.YES));
-            for (String keyword : phrase.getKeywords()) {
+            doc.add(new TextField("triggerText", searchObject.getTriggerText(), Field.Store.YES));
+            for (String keyword : searchObject.getKeywords()) {
                 doc.add(new TextField("keyword", keyword, Field.Store.YES));
             }
             writer.addDocument(doc);
@@ -53,10 +53,10 @@ public class LuceneIndexService {
         indexMap.put(lang, index);
     }
 
-    private List<Phrase> loadPhrases(String fileName) throws IOException {
+    private List<SearchObject> loadPhrases(String fileName) throws IOException {
         InputStream inputStream = new ClassPathResource(fileName).getInputStream();
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(inputStream, new TypeReference<List<Phrase>>() {
+        return objectMapper.readValue(inputStream, new TypeReference<List<SearchObject>>() {
         });
     }
 

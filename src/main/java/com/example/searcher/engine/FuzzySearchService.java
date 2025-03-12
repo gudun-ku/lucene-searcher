@@ -43,7 +43,7 @@ public class FuzzySearchService implements SearchService {
         for (int i = 0; i < topDocs.scoreDocs.length; i++) {
             ScoreDoc scoreDoc = topDocs.scoreDocs[i];
             Document doc = searcher.doc(scoreDoc.doc);
-            results[i] = doc.get("phrase");
+            results[i] = doc.get("triggerText");
         }
         reader.close();
         return results;

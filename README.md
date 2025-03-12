@@ -8,8 +8,8 @@ fuzzy matching and multiple languages.
 ## Features
 
 - **Fuzzy Search**: Approximate matching for typos and partial keywords.
-- **Multilanguage Support**: Loads phrases from JSON files (e.g., English and Russian).
-- **REST API**: Simple endpoint for searching phrases.
+- **Multilanguage Support**: Loads searchObjects from JSON files (e.g., English and Russian).
+- **REST API**: Simple endpoint for searching searchObjects.
 - **In-Memory Index**: Uses Apache Lucene for fast queries.
 
 ---
@@ -73,7 +73,7 @@ Phrases are loaded from JSON files in `src/main/resources`.
 ```json
 [
   {
-    "phrase": "DevOps practices improve software delivery",
+    "searchObject": "DevOps practices improve software delivery",
     "keywords": [
       "devops",
       "practices",
@@ -89,7 +89,7 @@ Phrases are loaded from JSON files in `src/main/resources`.
 ```json
 [
   {
-    "phrase": "DevOps практики улучшают доставку программного обеспечения",
+    "searchObject": "DevOps практики улучшают доставку программного обеспечения",
     "keywords": [
       "devops",
       "практики",
